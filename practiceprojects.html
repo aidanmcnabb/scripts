@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    
+    <div class="button-container">
+        <div class="left">
+            <div>Hello!</div>
+            <div>How's it going?</div>
+        </div>
+        <div class="right">
+            <button class="call-to-action" onclick="alert('Good job, you\'re signed up!');">Sign Up</button>
+            
+        </div>
+    </div>
+    <div class="cart">
+        <div class="left2">
+            <div>Cart Quantity</div>
+        </div>
+        <div class="right2">
+            
+            
+            <button class="show-quantity" onclick="console.log(`Cart Quantity: ${x}`)">Show Quantity</button>
+            
+            <button class="add1" onclick="
+                if (x >= cartMax) {
+                    console.log(`Cart: ${x = 10}Cannot add anymore to cart.`);
+                } else { 
+                    console.log(`Cart: ${x = x + 1}`)};">Add to Cart</button>
+            <button class="add2" onclick="
+            if (x >= cartMax) {
+                    console.log(`Cart: ${x = 10}Cannot add anymore to cart.`);
+                } else { 
+                    console.log(`Cart: ${x = x + 2}`)};">+2</button>
+            <button class="add3" onclick="
+           if (x >= cartMax) {
+                    console.log(`Cart: ${x = 10}Cannot add anymore to cart.`);
+                } else { 
+                    console.log(`Cart: ${x = x + 3}`)};">+3</button>
+            <button class="reset" onclick="
+            
+            console.log(`Cart: ${x = 0}`)">Reset Cart</button>
+
+          
+            
+            
+        </div>
+    </div>
+    <div class="applecalcontainer">
+        <button onclick="console.log(calculation += '1')" class="buttons">1</button>
+        <button onclick="console.log(calculation += '2')" class="buttons">2</button>
+        <button onclick="console.log(calculation += '3')" class="buttons">3</button>
+        <button onclick="console.log(calculation += '+')" class="buttons2">+</button>
+        <button onclick="console.log(calculation += '4')" class="buttons">4</button>
+        <button onclick="console.log(calculation += '5')" class="buttons">5</button>
+        <button onclick="console.log(calculation += '6')" class="buttons">6</button>
+        <button onclick="console.log(calculation += '-')" class="buttons2">-</button>
+        <button onclick="console.log(calculation += '7')" class="buttons">7</button>
+        <button onclick="console.log(calculation += '8')" class="buttons">8</button>
+        <button onclick="console.log(calculation += '9')" class="buttons">9</button>
+        <button onclick="console.log(calculation += '*')" class="buttons2">*</button>
+        <button onclick="console.log(calculation += '0')" class="buttons">0</button>
+        <button onclick="console.log(calculation += '.')" class="buttons">.</button>
+        <button onclick="console.log(eval(calculation))" class="buttons">=</button>
+        <button onclick="console.log(calculation += '/')" class="buttons2">/</button>
+        <button onclick="console.log(calculation = '')" class="buttons3">Clear</button>
+    </div>
+    <div class="rpscontainer">
+        <div class="rpsheader">Rock Paper Scissors</div>
+        <div class="circles">
+            <button onclick="playGame('rock');" class="rock-button"><img src="img/rock-image.png" width="60px" height="60px"></button>   
+            <button onclick="playGame('paper')" class="paper-button"><img src="img/paper-image.png" width="60px" height="60px"></button>
+            <button onclick="playGame('scissors')" class="scissors-button"><img src="img/scissors-image3.png" width="60px" height="60px"></button>
+
+        </div>
+        <div class="result"></div>
+        <div class="explination">
+            <div class="image-container1"></div>
+            <div class="vs">VS</div>
+            <div class="image-container2"></div>
+        </div>
+        <div class="record"></div>
+        <button class="Reset" onclick="resetScore();">Reset Score</button>
+    </div>
+
+    <script>
+        let x = 0
+        let calculation = '';
+        const cartMax = 10
+        const cartMin = 0
+
+        // SOOOOO, this is my rock paper scissors game... 
+        
+        // Algorithim...
+        
+        // So, first step is to create the html and style with css which was already acomplished*()*()*()
+        
+        // Create a function that makes a random choice and split that choice into three possible categories*()*()*()
+
+        // compare that choice to the human choice and determine the result
+
+        // create a visual representation of the result
+
+        // use JSON to keep track of wins, tie loss streak
+
+        // create a reset score button
+
+       
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        }
+
+        function resetScore() {
+            score.wins = 0
+            score.losses = 0
+            score.ties = 0
+            localStorage.removeItem('score');
+
+            updateScoreElement();
+        }
+
+        function updateScoreElement() {    
+                
+            
+                let recordStyles = document.querySelector('.record').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`;
+            }
+
+        
+        
+
+     
+
+        function playGame(playerMove) {
+            let computerMove = computerChoice();
+            let result = '';
+
+            if (playerMove === 'rock') {
+                
+                if (computerMove === 'rock') {
+                    result = 'Tie'
+                } else if (computerMove === 'paper') {
+                    result = 'You lose'
+                } else if (computerMove === 'scissors') {
+                    result = 'You win'
+                }
+            }
+
+            if (playerMove === 'paper') {
+                
+                 if (computerMove === 'rock') {
+                    result = 'You win'
+                } else if (computerMove === 'paper') {
+                    result = 'Tie'
+                } else if (computerMove === 'scissors') {
+                    result = 'You lose'
+                }
+            }
+
+            if (playerMove === 'scissors') {
+                
+                if (computerMove === 'rock') {
+                    result = 'You lose';
+                } else if (computerMove === 'paper') {
+                    result = 'You win';
+                } else if (computerMove === 'scissors') {
+                    result = 'Tie';
+                }
+            }
+        
+
+            if (result === 'You win') {
+                score.wins += 1;
+            } else if (result === 'You lose') {
+                score.losses += 1;
+            } else if (result === 'Tie') {
+                score.ties += 1;
+            }
+
+            let resultStyles = document.querySelector('.result').innerHTML = `${result}`;
+            
+            
+            
+                
+              /*  
+                const rockImage = document.createElement('rockImage');
+                rockImage.src = 'img/rock-image.png';
+                
+
+                const paperImage = document.createElement('paperImage')
+                paperImage.src = 'img/paper-image.png';
+
+                const scissorsImage = document.createElement('scissorsImage')
+                scissorsImage.src = 'img/scissors-image3.png'
+                
+                const vsContainer1 = document.getElementsByClassName('image-container1')
+                const vsContainer2 = document.getElementsByClassName('image-container2')
+                
+                if (playerMove === 'rock') {
+                    vsContainer1.appendChild(rockImage);
+                } else if (playerMove === 'paper') {
+                    vsContainer1.appendChild(paperImage);
+                } else if (playerMove === 'scissors') {
+                    vsContainer1.appendChild(scissorsImage);
+                }
+
+                return
+            */
+
+           
+            
+            let explinationStyles = document.querySelector('.explination').innerHTML = `You picked ${playerMove}, Computer picked ${computerMove}`;
+                
+           localStorage.setItem('score', JSON.stringify(score))
+           
+
+            updateScoreElement();
+
+            return;
+            
+
+        } 
+       
+        function computerChoice() {
+                const randomNumber = Math.random();
+                let computerMove = '';
+
+                if (randomNumber >= 0 && randomNumber < 1/3) {
+                    computerMove = 'rock';
+                } else if (randomNumber >= 1/3 && randomNumber < 2/3) {
+                    computerMove = 'paper'
+                } else if (randomNumber >= 2/3 && randomNumber < 1) {
+                    computerMove = 'scissors'
+                }
+               
+
+                return computerMove;
+            }
+       
+        
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        /* 
+       scoreBoard = {
+                wins: 0,
+                losses: 0,
+                ties: 0
+            }
+
+        function playgame() {
+        
+            const random = Math.random();
+            let computerMove = computerChoice();
+            let result = '';
+
+            function computerChoice() {
+                let computerMove = '';
+                
+                if (random >= 0 && random < 1/3) {
+                    computerMove = 'rock';
+                } else if (random > 1/3 && random <= 2/3) {
+                    computerMove = 'paper';
+                } else if (random > 2/3 && random <= 1) {
+                    computerMove = 'scissors';
+                }
+
+                return computerMove;
+            }
+
+            
+
+            function playerChoice(roshambo) {
+                if (roshambo === 'rock')
+                    if (computerMove === 'rock') {
+                        result = 'Tie.';
+                    } else if (computerMove === 'paper') {
+                        result = 'You lose.';
+                    } else if (computerMove === 'scissors') {
+                        result = 'You win.';
+                    }
+                if (roshambo === 'paper')
+                    if (computerMove === 'rock') {
+                        result = 'You win.';
+                    } else if (computerMove === 'paper') {
+                        result = 'Tie.';
+                    } else if (computerMove === 'scissors') {
+                        result = 'You lose.';
+                    }
+                if (roshambo === 'scissors')
+                    if (computerMove === 'rock') {
+                        result = 'You lose.';
+                    } else if (computerMove === 'paper') {
+                        result = 'You win.';
+                    } else if (computerMove === 'scissors') {
+                        result = 'Tie.';
+                    }
+                
+            }
+
+            if (result === 'You win.') {
+                    scoreBoard.wins += 1;
+                } else if (result === 'You lose.') {
+                    scoreBoard.losses += 1;
+                } else if (result === 'Tie.') {
+                    scoreBoard.ties += 1;
+                }
+
+            console.log(`Hello, this is the result. ${result}`)
+            
+            
+            function finalResult() {document.querySelector('.result')
+                .innerHTML = `${result}`;
+            }
+
+            finalResult();
+
+            function explainedResult() {document.querySelector('.explination')
+                .innerHTML = `You picked ${playerChoice} Computer picked ${computerMove}`;
+            }
+
+            explainedResult();
+
+            function localScoreBoard () {document.querySelector('.record')
+                .innerHTML = `Wins: ${scoreBoard.wins} Losses: ${scoreBoard.losses} Ties: ${scoreBoard.ties}`;
+            }
+
+            localScoreBoard();
+
+            return; 
+        } */
+
+
+    </script>
+    
+    
+</body>
+</html>
+
+<!-- alert(`Items (${1 + 1 + 1 + 1}): $${((2095 * 2) + (499 * 2)) / 100} \nShipping & handling: $${(499 * 2) / 100} \nTotal before tax: $${(5788 +998) / 100} \nEstimated tax (10%): $${Math.round((6789 * .1)) / 100}`) -->
